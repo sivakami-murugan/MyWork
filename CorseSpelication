@@ -1,0 +1,216 @@
+import { Checkbox, Divider, Row } from 'antd'
+import Button from 'components/Button'
+import { ScrollBar } from 'components/CommonStyles'
+import ArrowSideIcon from 'components/icons/ArrowSideIcon'
+import SideArrowColor from 'components/icons/SideArrowColor'
+import {
+  CheckboxColumn,
+  CheckboxLabel,
+  ColoContent,
+  ColoItem,
+  DepartColumn,
+  DepartmentItem,
+  MenuFlex,
+  SideArrowItem,
+  SubmitFlex,
+  SubmitFlexBottom,
+} from 'modules/Courses/Partials/AddCourseDrawer/Style/style'
+import React, { useState } from 'react'
+
+const DepartmentData = [
+  {
+    id: 1,
+    department: 'Bio-Technology',
+  },
+  {
+    id: 2,
+    department: 'Computer Science',
+  },
+  {
+    id: 3,
+    department: 'Applied Electronics',
+  },
+  {
+    id: 4,
+    department: 'Chemical Technology',
+  },
+  {
+    id: 5,
+    department: 'Computer Engineering',
+  },
+]
+
+function DepartmentAndSpecialization({ hideElement }) {
+  const [fruits, setFruits] = useState([
+    { id: 1, name: 'Apple', checked: false },
+    { id: 2, name: 'Banana', checked: false },
+    { id: 3, name: 'Orange', checked: false },
+    { id: 4, name: 'Goya', checked: false },
+    { id: 5, name: 'Lemon', checked: false },
+    { id: 6, name: 'Mango', checked: false },
+    { id: 7, name: 'Bine apple', checked: false },
+    { id: 8, name: 'Water Melon', checked: false },
+    { id: 9, name: 'Papaya', checked: false },
+  ])
+  const handleCheckboxChange = event => {
+    const targetName = event.target.name
+    const targetChecked = event.target.checked
+
+    if (targetName === 'select-all') {
+      setFruits(fruits.map(fruit => ({ ...fruit, checked: targetChecked })))
+    } else {
+      setFruits(
+        fruits.map(fruit =>
+          fruit.name === targetName
+            ? { ...fruit, checked: targetChecked }
+            : fruit
+        )
+      )
+    }
+  }
+  const [departItem, setDepartItem] = React.useState({
+    id: 1,
+    department: 'Bio-Technology',
+  })
+  const [icon, setIcon] = React.useState('default')
+  const [id, setId] = React.useState('1')
+  const onDepartClick = data => {
+    setDepartItem(data)
+    setId(data.id)
+    console.log(data, '88*********88')
+    setIcon(data.department)
+  }
+  return (
+    <>
+      <MenuFlex column>
+        <Row>
+          <ColoContent>Department</ColoContent>
+          <Divider
+            type="vertical"
+            style={{
+              height: '60px',
+              border: '1px solid #E6E7EA',
+            }}
+          />
+
+          <ColoContent>Specialization</ColoContent>
+          <SubmitFlex style={{ width: '100%' }} />
+        </Row>
+        <Row>
+          <ScrollBar
+            id="scrollableDiv"
+            height={'40vh'}
+            style={{ width: '47%' }}
+          >
+            <ColoItem>
+              <Checkbox
+                style={{
+                  color: '#010E30',
+                  fontWeight: 600,
+                  paddingLeft: '10px',
+                  paddingTop: '10px',
+                }}
+              >
+                Select All
+              </Checkbox>
+              {DepartmentData.map(item => {
+                return (
+                  <CheckboxColumn
+                    key={item.id}
+                    onClick={() => onDepartClick(item)}
+                    name={icon}
+                  >
+                    <DepartmentItem
+                      backgroundColor={item.id == id ? '#3249D7' : ''}
+                      borderRadius={item.id == id ? '10px' : '0px'}
+                      color={item.id == id ? '#FFFFFF' : '#999FAC'}
+                      fontSize={item.id == id ? '16px' : '16px'}
+                      fontWeight={item.id == id ? '500' : '400'}
+                    >
+                      {item.department}
+                    </DepartmentItem>
+
+                    <SideArrowItem
+                      backgroundColor={item.id == id ? '#3249D7' : '#EBECEE'}
+                      borderRadius={item.id == id ? '10px' : '12px'}
+                      color={item.id == id ? '#FFFFFF' : '#999FAC'}
+                      fontSize={item.id == id ? '16px' : '16px'}
+                      fontWeight={item.id == id ? '500' : '400'}
+                    >
+                      {icon === 'default' ? (
+                        <ArrowSideIcon />
+                      ) : DepartmentData.map(
+                          item => item.department === icon
+                        ) ? (
+                        <ArrowSideIcon />
+                      ) : (
+                        <SideArrowColor />
+                      )}
+                    </SideArrowItem>
+                  </CheckboxColumn>
+                )
+              })}
+            </ColoItem>
+          </ScrollBar>
+          <Divider
+            type="vertical"
+            style={{
+              height: '306px',
+              border: '1px solid #E6E7EA',
+            }}
+          />
+          <ScrollBar
+            id="scrollableDiv"
+            height={'40vh'}
+            style={{ width: '50%' }}
+          >
+            <ColoItem>
+              {DepartmentData.map(item =>
+                item.id === id ? (
+                  <DepartColumn>
+                    <CheckboxLabel>
+                      <input
+                        type="checkbox"
+                        name="select-all"
+                        checked={fruits.every(fruit => fruit.checked)}
+                        onChange={handleCheckboxChange}
+                        style={{
+                          width: '15px',
+                        }}
+                      />
+                      Select All
+                    </CheckboxLabel>
+                    {fruits.map(fruit => (
+                      <CheckboxLabel key={fruit.name} id={id}>
+                        <input
+                          style={{
+                            width: '15px',
+                          }}
+                          type="checkbox"
+                          name={fruit.name}
+                          id={id}
+                          checked={fruit.checked}
+                          onChange={handleCheckboxChange}
+                        />
+                        {fruit.name}
+                      </CheckboxLabel>
+                    ))}
+                  </DepartColumn>
+                ) : null
+              )}
+            </ColoItem>
+          </ScrollBar>
+        </Row>
+        <SubmitFlexBottom right>
+          <Button.Primary
+            text="Ok"
+            hideElement={hideElement}
+            onClick={hideElement}
+          />
+        </SubmitFlexBottom>{' '}
+      </MenuFlex>
+    </>
+  )
+}
+export default DepartmentAndSpecialization
+
