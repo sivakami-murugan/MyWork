@@ -1,0 +1,56 @@
+.[$FRAGMENT_CLASS$] {
+
+}
+.getInTouch .c-mt-3, .c-my-3{
+ display:none;
+}
+.getInTouch   .portlet-forms .btn, .form-entry .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    border-radius: 5rem;
+    background: #333;
+    color: #fff;
+    width: 200px;
+    height: 45px;
+    border: none;
+    padding: 0px;
+    background: #C679F6;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.getInTouch  .portlet-forms .lfr-ddm-form-page-title, .portlet-forms .form-builder-page-header-title.form-control, .form-entry .lfr-ddm-form-page-title, .form-entry .form-builder-page-header-title.form-control {
+display:none;
+}
+.getInTouch   .text-secondary {
+    display:none;
+}
+ .getInTouch  .lfr-ddm__default-page-header-line{
+ display:none;
+}
+.getInTouch .lfr-ddm__default-page-header-title{
+     color: #C679F6;
+    font-size: 2.25rem;
+    font-weight: 600;
+    line-height: 4rem;
+    margin: 1rem 0;
+}
+.getInTouch .portlet-forms label {
+   color: #626262;
+   font-style: normal;
+   font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 0.25rem;
+    max-width: 100%;
+}
+.getInTouch .form-control{
+    width: 100%;
+    background: #FFFFFF;
+    padding: 12px;
+    border: 1px solid #626262;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}

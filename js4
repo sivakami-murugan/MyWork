@@ -1,0 +1,51 @@
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+
+console.log("Welcome to Programiz!");
+
+const item = [{
+    "Id": 1,
+    "FirstName": "Ken",
+    "LastName": "Sanchez",
+    "Info": {
+        "MiddleName": "J"
+    }
+}, {
+    "Id": 2,
+    "FirstName": "Terri",
+    "LastName": "Duffy",
+    "Info": {
+        "MiddleName": "Lee"
+    }
+}, {
+    "Id": 3,
+    "FirstName": "Roberto",
+    "LastName": "Tamburello"
+}, {
+    "Id": 4,
+    "FirstName": "Rob",
+    "LastName": "Walters"
+}, {
+    "Id": 5,
+    "FirstName": "Gail",
+    "LastName": "Erickson",
+    "Info": {
+        "Title": "Ms.",
+        "MiddleName": "A"
+    }
+}]
+
+const names = (title)=>{
+     
+     for (let i=0; i<item.length; i++){
+        //  console.log(item[i])
+         var elem = item[i];
+         if(elem.Info!==undefined && elem.Info.Title !==undefined){
+            if(elem.Info.Title === title ){
+             console.log(elem)
+         }  
+         }
+        
+     }
+}
+names ("Ms.")

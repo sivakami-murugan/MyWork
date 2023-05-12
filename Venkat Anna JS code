@@ -1,0 +1,12 @@
+ console.log(data,"data");
+                var placeholder = document.querySelector("#data-output");
+                var content;
+                data.map((item,index)=>{
+                console.log(item.client);
+                  var div = document.querySelector("#data-output");
+
+                   var li = document.createElement("li");
+                   li.innerHTML += `${index} : ${item.client}` ;
+                   div.appendChild(li);
+                   console.log(div);
+                });

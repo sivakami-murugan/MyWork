@@ -1,0 +1,43 @@
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+
+console.log("Welcome to Programiz!");
+
+const month = ['jan','feb','mar','apr','may','jun','july','agu','sep','oct','nov', 'dec']
+
+const arr = [1,2,2,2,2];
+
+function years(months){
+    var result ='feb' ;
+    for(let i=0; i<month.length; i++){
+        // console.log(month.length);
+        if(month[i] == months){
+            result=  month[i];
+            // console.log(month[i]);
+        }
+        
+    }
+   return result;
+}
+function addition(numberA,numberB){
+    return numberA + numberB;
+}
+function number(){
+     var add = 0 ;
+     for(let i=0; i<arr.length; i++){
+        //  console.log(arr[i]);
+        //  add = add + arr[i];
+        add = addition(add ,arr[i]);
+     }
+     return add;
+}
+// number();
+console.log(number());
+// console.log(years("may"));
+// years("jan");
+
+
+
+
+    
+    
